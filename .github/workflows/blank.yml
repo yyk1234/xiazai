@@ -26,7 +26,7 @@ jobs:
 
     - name: 下载
       run: |
-        aria2c -x16 -j5 -U "yimu" -d tmp -o "${{ github.event.inputs.name }}" "${{ github.event.inputs.URL }}" || wget -U "yimu" "${{ github.event.inputs.URL }}" -O "tmp/${{ github.event.inputs.name }}"
+        aria2c -x16 -j5 -U "yimu" -d tmp -o "${{ github.event.inputs.name }}" "${{ github.event.inputs.URL }}" || wget -U "yimu" "${{ github.event.inputs.URL }}" -O tmp/
 
     - name: 检验并化分
       run: |
