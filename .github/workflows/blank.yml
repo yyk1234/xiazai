@@ -6,7 +6,12 @@ on:
       URL:
         description: 'URL'
         required: true
-        default: 'http://dl-res.flymeos.com/Firmware/Flyme/m5_note/6.3.0.0/intl/20180428003220/81bd12a4/update.zip'
+        default: 'https://yun.daxiaamu.com/OnePlus_Roms/%E4%B8%80%E5%8A%A09R/ColorOS%2011.2%20A.08/LE2100domestic_11_A.08_2021052601230251.zip'
+    
+      name:
+        description: 'URL'
+        required: true
+        default: 'update.zip'
         
 env:
   transfer: true
