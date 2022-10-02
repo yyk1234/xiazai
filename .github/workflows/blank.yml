@@ -34,7 +34,7 @@ jobs:
         
         if [[ $(du -sb tmp/${{ github.event.inputs.name }} | awk '{print $1}') -gt 2097152000 ]];then
                   echo -e "split packaging..."
-                  tar -cpzf - tmp/${{ github.event.inputs.name }} | split -d -b 2048m - tmp/${{ github.event.inputs.name }}
+                  split -d -b 2048m - tmp/${{ github.event.inputs.name }}
                   rm -rf tmp/${{ github.event.inputs.name }}        
               fi
               
