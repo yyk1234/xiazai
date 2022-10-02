@@ -22,7 +22,7 @@ jobs:
 
     - name: 下载
       run: |
-        aria2c -x16 -j5 -s16 -U "yimu" -d tmp || wget -U "yimu" "${{ github.event.inputs.URL }}" -d tmp/
+        aria2c -x16 -j5 -s16 -U "yimu" -d tmp "${{ github.event.inputs.URL }}" || wget -U "yimu" "${{ github.event.inputs.URL }}" -d tmp/
         i=$(ls tmp)
             
     - name: 检验和化分
