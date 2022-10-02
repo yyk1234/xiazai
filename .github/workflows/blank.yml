@@ -31,6 +31,7 @@ jobs:
                   echo -e "split packaging..."
                   #tar -cpzf - tmp/*  
                   split -d -b 2048m - tmp/*
+                  ls tmp
               fi
 
     - name: 上传到transfer
