@@ -29,7 +29,8 @@ jobs:
         if [[ $(du -sb tmp/${{ github.event.inputs.name }} | awk '{print $1}') -gt 2097152000 ]];then
                   echo -e "split packaging..." 
                   i=$(ls tmp)
-                  split -d -b 2048m tmp/$i tmp/$i
+                  split -d -b 2048m tmp/$i $i
+                  ls
                   rm -rf tmp/$i 
                   fi    
                          
