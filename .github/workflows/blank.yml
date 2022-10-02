@@ -23,10 +23,10 @@ jobs:
     - name: 下载
       run: |
         aria2c -x16 -j5 -s16 -U "yimu" -d tmp "${{ github.event.inputs.URL }}" || wget -U "yimu" "${{ github.event.inputs.URL }}" -d tmp/
-        i=$(ls tmp)
             
     - name: 检验和化分
       run: |
+        i=$(ls tmp)            
         if [[ $(du -sb tmp/$i) -gt 2097152000 ]];then
             echo -e "split packaging..." 
             split -d -b 2048m tmp/$i tmp/$i
