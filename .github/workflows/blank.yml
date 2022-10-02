@@ -7,11 +7,6 @@ on:
         description: 'URL'
         required: true
         default: 'https://yun.daxiaamu.com/OnePlus_Roms/%E4%B8%80%E5%8A%A09R/ColorOS%2011.2%20A.08/LE2100domestic_11_A.08_2021052601230251.zip'
-    
-      name:
-        description: 'URL'
-        required: true
-        default: 'update.zip'
         
 env:
   transfer: true
@@ -31,13 +26,14 @@ jobs:
 
     - name: 检验并化分
       run: |
-        
         if [[ $(du -sb tmp/${{ github.event.inputs.name }} | awk '{print $1}') -gt 2097152000 ]];then
-                  echo -e "split packaging..."
-                  split -d -b 2048m - tmp/${{ github.event.inputs.name }}
-                  rm -rf tmp/${{ github.event.inputs.name }}        
-              fi
-              
+                  echo -e "split packaging..." 
+                  i=$(ls tmp)
+                  split -d -b 2048m - tmp/$i $i
+                  rm -rf tmp/$i 
+                  ls tmp  
+                  fi    
+                         
     - name: 上传到transfer
       if: env.transfer == 'true'      
       run: |
