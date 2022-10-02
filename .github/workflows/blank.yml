@@ -22,16 +22,16 @@ jobs:
 
     - name: 下载
       run: |
-        aria2c -x16 -j5 -s16 -U "yimu" -d tmp "${{ github.event.inputs.URL }}" || wget -U "yimu" "${{ github.event.inputs.URL }}" -d tmp/
-            
+        aria2c -x16 -j5 -s16 -U "yimu" -d tmp "${{ github.event.inputs.URL }}" -o "${{ github.event.inputs.name }}" || wget -U "yimu" "${{ github.event.inputs.URL }}" -d tmp/
+
     - name: 检验和化分
       run: |
-        if [[ $(du -sb tmp/) -gt 2097152000 ]];then
-            echo -e "split packaging..." 
-            i=$(ls tmp)            
-            split -d -b 2048m tmp/$i tmp/$i
-            rm -rf tmp/$i 
-            fi    
+        if [[ $(du -sb tmp | awk '{print $1}') -gt 2097152000 ]];then
+                  echo -e "split packaging..." 
+                  i=$(ls tmp)
+                  split -d -b 2048m tmp/$i tmp/$i
+                  rm -rf tmp/$i 
+                  fi    
                          
     - name: 上传到transfer
       if: env.transfer == 'true'      
