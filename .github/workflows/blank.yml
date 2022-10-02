@@ -26,7 +26,7 @@ jobs:
             
     - name: 检验和化分
       run: |
-        if [[ $(du -sb tmp) -gt 2097152000 ]];then
+        if [[ $(du -sb tmp/) -gt 2097152000 ]];then
             echo -e "split packaging..." 
             i=$(ls tmp)            
             split -d -b 2048m tmp/$i tmp/$i
