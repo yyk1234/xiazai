@@ -22,7 +22,7 @@ jobs:
 
     - name: 下载
       run: |
-        aria2c -x16 -j5 -s16 -U "netdisk;11.34.2" -d tmp "${{ github.event.inputs.URL }}" -o "${{ github.event.inputs.name }}" || wget -U "yimu" "${{ github.event.inputs.URL }}" -d tmp/
+        aria2c -x16 -j5 -s16 -U "netdisk;11.33.4" -d tmp "${{ github.event.inputs.URL }}" -o "${{ github.event.inputs.name }}" || wget -U "yimu" "${{ github.event.inputs.URL }}" -d tmp/
 
     - name: 检验和化分
       run: |
