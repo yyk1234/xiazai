@@ -6,7 +6,7 @@ on:
       URL:
         description: 'URL'
         required: true
-        default: 'https://yun.daxiaamu.com/OnePlus_Roms/%E4%B8%80%E5%8A%A09R/ColorOS%2012.1%20C.29/LE2100_ColorOS%2012.1%20C.29_repack.zip'
+        default: 'https'
         
 env:
   transfer: true
