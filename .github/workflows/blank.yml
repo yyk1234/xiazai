@@ -1,4 +1,4 @@
-name: Build
+name: Xiazai
 
 on:
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
          fi    
         done
                          
-    - name: 上传到wetransfer
+    - name: 上传到transfer
       if: env.transfer == 'true'      
       run: |
         curl -sL https://git.io/file-transfer | sh
