@@ -31,7 +31,7 @@ jobs:
       run: |
         i=$(ls tmp)
         for i in $i; do
-         if ((du -s tmp/$i)>2000000) then
+         if ((du -s tmp/$i)>20000000) then
            echo -e "split packaging..." 
            split -d -b 2048m "tmp/$i" "tmp/$i"
            rm -rf "tmp/$i"
