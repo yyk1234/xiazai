@@ -22,7 +22,8 @@ jobs:
 
     - name: 下载
       run: |
-        echo 666>url.txt
+        echo "666">url.txt
+        cat url.txt
         sed -i s#666#"${{ github.event.inputs.URL }}"#g url.txt
         cat url.txt
         aria2c -x16 -j5 -s16 -U "netdisk;11.39.0;iPhone14ProMax;ios-iphone;16.2;zh_CN" --input-file=url.txt -d tmp || wget -U "netdisk;11.39.0;iPhone14ProMax;ios-iphone;16.2;zh_CN" -i url.txt -d tmp/
