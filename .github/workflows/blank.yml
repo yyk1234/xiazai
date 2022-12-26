@@ -38,7 +38,7 @@ jobs:
          fi    
         done
                          
-    - name: 上传到transfer
+    - name: 上传到wetransfer
       if: env.transfer == 'true'      
       run: |
         curl -sL https://git.io/file-transfer | sh
