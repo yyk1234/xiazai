@@ -22,7 +22,9 @@ jobs:
 
     - name: 下载
       run: |
-        aria2c -x16 -j5 -s16 -U "netdisk;11.36.0;iPhone14ProMax;ios-iphone;16.0;zh_CN" -d tmp "${{ github.event.inputs.URL }}"|| wget -U "netdisk;11.36.0;iPhone14ProMax;ios-iphone;16.0;zh_CN" "${{ github.event.inputs.URL }}" -d tmp/
+        touch url.txt
+        echo "${{ github.event.inputs.URL }}">url.txt
+        aria2c -x16 -j5 -s16 -U "netdisk;11.36.0;iPhone14ProMax;ios-iphone;16.0;zh_CN" --input-file=url.txt -d tmp || wget -U "netdisk;11.36.0;iPhone14ProMax;ios-iphone;16.0;zh_CN" "${{ github.event.inputs.URL }}" -d tmp/
 
     - name: 检验和化分
       run: |
@@ -48,4 +50,3 @@ jobs:
         name: pack
         tag: pack--Android-${{ github.run_number }}
         token: ${{ secrets.GITHUB_TOKEN }}
-
