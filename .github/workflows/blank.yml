@@ -31,11 +31,11 @@ jobs:
       run: |
         i=$(ls tmp)
         for i in $i; do
-        if [[ (du -sb $i | awk '{print $1}')>2097152000 ]];then
-                  echo -e "split packaging..." 
-                  split -d -b 2048m "tmp/$i" "tmp/$i"
-                  rm -rf "tmp/$i"
-                  fi    
+         if ((du -s $i)>2000000) then
+           echo -e "split packaging..." 
+           split -d -b 2048m "tmp/$i" "tmp/$i"
+           rm -rf "tmp/$i"
+         fi    
         done
                          
     - name: 上传到transfer
