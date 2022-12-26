@@ -39,8 +39,9 @@ jobs:
       if: env.transfer == 'true'      
       run: |
         curl -sL https://git.io/file-transfer | sh
-        ls tmp      
-        sudo ./transfer wet tmp/$(ls *)
+        ls tmp
+        i=$(ls tmp)     
+        sudo ./transfer wet tmp/$i
 
     - name: 上传zhlhlf目录所有文件至 release
       if: env.release == 'true'      
