@@ -31,7 +31,7 @@ jobs:
       run: |
         i=$(ls tmp)
         for i in $i; do
-         if [[ $(du -sb $i | awk '{print $1}') -gt 2097152000 ]];then
+         if [[ $(du -sb tmp/$i) -gt 2097152000 ]];then
            echo -e "split packaging..." 
            split -d -b 2048m "tmp/$i" "tmp/$i"
            rm -rf "tmp/$i"
