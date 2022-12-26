@@ -29,12 +29,14 @@ jobs:
 
     - name: 检验和化分
       run: |
-        if [[ $(du -sb tmp | awk '{print $1}') -gt 2097152000 ]];then
+        i=$(ls tmp)
+        for i in $i; do
+        if [[ $(du -sb $i | awk '{print $1}') -gt 2097152000 ]];then
                   echo -e "split packaging..." 
-                  i=$(ls tmp)
                   split -d -b 2048m "tmp/$i" "tmp/$i"
                   rm -rf "tmp/$i"
                   fi    
+        done
                          
     - name: 上传到transfer
       if: env.transfer == 'true'      
