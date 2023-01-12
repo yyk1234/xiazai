@@ -29,8 +29,8 @@ jobs:
 
     - name: 检验和化分
       run: |
-        i=$(ls tmp)
-        for i in $i; do
+        m=$(ls tmp)
+        for i in $m; do
          if [[ $(du -sb tmp/$i | awk '{print $1}') -gt 2097152000 ]];then
            echo -e "split packaging..." 
            split -d -b 2048m "tmp/$i" "tmp/$i"
@@ -43,8 +43,8 @@ jobs:
       run: |
         curl -sL https://git.io/file-transfer | sh
         ls tmp
-        i=$(ls tmp) 
-        for i in $i; do ./transfer wet tmp/$i ; done
+        m=$(ls tmp) 
+        for i in $m; do ./transfer wet tmp/$i ; done
 
     - name: 上传zhlhlf目录所有文件至 release
       if: env.release == 'true'      
