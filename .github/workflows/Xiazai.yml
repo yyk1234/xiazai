@@ -7,6 +7,11 @@ on:
         description: 'URL'
         required: true
         default: ''
+
+      UA:
+        description: 'UA'
+        required: true
+        default: 'LogStatistic'
         
 env:
   transfer: true
@@ -25,7 +30,7 @@ jobs:
         echo "${{ github.event.inputs.URL }}">url.txt
         sed -i s/' '/'\n'/g url.txt
         cat url.txt
-        aria2c -x16 -j5 -s16 -U "LogStatistic" --input-file=url.txt -d tmp || wget -U "netdisk" -i url.txt -d tmp/
+        aria2c -x16 -j5 -s16 -U "${{ github.event.inputs.UA }}" --input-file=url.txt -d tmp || wget -U "${{ github.event.inputs.UA }}" -i url.txt -d tmp/
 
     - name: 检验和化分
       run: |
